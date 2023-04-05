@@ -23,4 +23,14 @@ router.post('/', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+  db.delAttendee(+req.params.id)
+    .then(() => {
+      res.sendStatus(200)
+    })
+    .catch((err) => {
+      console.log(err.message)
+    })
+})
+
 export default router
