@@ -5,8 +5,8 @@
 exports.up = function (knex) {
   return knex.schema.createTable('attendees', (table) => {
     table.increments('id').primary()
-    table.integer('meeting_id')
-    table.integer('attendee_id')
+    table.string('name')
+    table.number('wage')
   })
 }
 
@@ -15,5 +15,5 @@ exports.up = function (knex) {
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-  return knex.schema.dropTable('atte')
+  return knex.schema.dropTable('attendees')
 }
