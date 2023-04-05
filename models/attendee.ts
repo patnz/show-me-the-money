@@ -1,8 +1,8 @@
-export interface Atendee extends AtendeeInfo {
+export interface Attendee extends AttendeeInfo {
   id: number
 }
 
-export interface AtendeeInfo {
+export interface AttendeeInfo {
   name: string
   wage: number
 }
