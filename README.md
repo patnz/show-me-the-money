@@ -15,7 +15,9 @@
 **BE Lead:** Olivia 
 **Hype people:** Everyone!!  
 
-### Teamwork principles
+## Teamwork principles
+
+### General principles 
 
  - Everyone gets heard  
  - Process over product   
@@ -29,13 +31,21 @@
  - Pleasure over pressure 
  - Share and celebrate wins (even small ones)!
 
-
-
-## Decision making
+### Decision making
 
  - Product owner to keep production on track
  - Lead responsible for comms
  - Democratic decision making
+
+
+### Practical team work 
+
+- Front-end/back-end split --> 6 frontend, 4 backend?
+- Pair programming
+- Create a development branch 
+- Add review protections to the main branch
+- Name branches by feature
+- Have team leads
 
 
 ## Week 7 Large group project
