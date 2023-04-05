@@ -1,5 +1,18 @@
 # $how Me The Money
 
+
+## Team Members and Roles
+
+**Team Members:** Estrella, Isaac, Jack, Josh, Louis, Reuben, Ryan, Olivia, Pat, Sam
+
+### Roles
+
+**Product Owner:** Jack
+**Scrum master:** Josh 
+**Vibes watcher:** Reuben
+**Git manager:** Ryan
+**Hype people:** Everyone!!
+
 ## Week 7 Large group project
 
 Meetings are expensive, but sometimes we forget how expensive they are and feel the need to talk for too long about topics that are unimportant for the meeting purpose.
