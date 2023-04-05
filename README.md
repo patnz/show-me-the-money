@@ -62,7 +62,7 @@
 Group objective: Gain experience across the stack and working in a larger team. 
 
 **Estrella:**  
-- Thunk actions
+- across stack
 - Css/Bulma
 
 **Isaac:** 
