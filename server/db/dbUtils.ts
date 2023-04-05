@@ -14,12 +14,12 @@ export function addMeeting(
 }
 
 export function getAllAttendees(db = connection): Promise<Models.Attendee[]> {
-  return db('meetings').select()
+  return db('attendees').select()
 }
 
 export function addAttendee(
   attendee: Models.Attendee,
   db = connection
 ): Promise<Models.Attendee> {
-  return db('meetings').insert(attendee).returning(['*'])
+  return db('attendees').insert(attendee).returning(['*'])
 }

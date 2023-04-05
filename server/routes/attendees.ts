@@ -3,7 +3,7 @@ import * as db from '../db/dbUtils'
 
 const router = express.Router()
 
-router.get('/', (res, req) => {
+router.get('/', (req, res) => {
   db.getAllAttendees()
     .then((attendeesData) => {
       res.json(attendeesData)
@@ -13,7 +13,7 @@ router.get('/', (res, req) => {
     })
 })
 
-router.post('/', (res, req) => {
+router.post('/', (req, res) => {
   db.addAttendee(req.body)
     .then((attendeesData) => {
       res.json(attendeesData)
