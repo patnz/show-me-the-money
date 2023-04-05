@@ -10,8 +10,33 @@
 **Product Owner:** Jack  
 **Scrum master:** Josh   
 **Vibes watcher:** Reuben  
-**Git manager:** Ryan  
+**Git manager:** Ryan 
+**FE Lead:** Sam
+**BE Lead:** Olivia 
 **Hype people:** Everyone!!  
+
+### Teamwork principles
+
+ - Everyone gets heard  
+ - Process over product   
+  - Focus on function over form  
+ - Prioritise personal goals --> individuals may want to lean into strengths or challenge areas   
+ - Focus on MVP   
+ - Have set full group standup times  
+ - Be transparent by actively checking in with others and communicating issues   
+ - Be respectful and communicative
+ - Find ways to help everyone stay on the same page 
+ - Pleasure over pressure 
+ - Share and celebrate wins (even small ones)!
+
+
+
+## Decision making
+
+ - Product owner to keep production on track
+ - Lead responsible for comms
+ - Democratic decision making
+
 
 ## Week 7 Large group project
 
