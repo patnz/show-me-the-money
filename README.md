@@ -7,11 +7,11 @@
 
 ### Roles
 
-**Product Owner:** Jack
-**Scrum master:** Josh 
-**Vibes watcher:** Reuben
-**Git manager:** Ryan
-**Hype people:** Everyone!!
+**Product Owner:** Jack  
+**Scrum master:** Josh   
+**Vibes watcher:** Reuben  
+**Git manager:** Ryan  
+**Hype people:** Everyone!!  
 
 ## Week 7 Large group project
 
