@@ -4,7 +4,7 @@ import { useAppDispatch } from '../hooks'
 function OneMeeting(props: any) {
   const dateString = new Date(props.date).toLocaleDateString()
 
-  // const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()a
 
   const fakeClickHandler = () => {
     console.log('clicked delete!')
