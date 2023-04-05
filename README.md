@@ -38,7 +38,7 @@
  - Democratic decision making
 
 
-### Practical team work 
+### Practical teamwork 
 
 - Front-end/back-end split --> 6 frontend, 4 backend?
 - Pair programming
@@ -46,6 +46,16 @@
 - Add review protections to the main branch
 - Name branches by feature
 - Have team leads
+
+
+### Conflicts 
+- Improvised standups
+- Quickly and kindlY address any issues that might arise 
+- Have a mediator if required --> this could be another group member or an external person (facily, humanskills etc)
+- Be open, honest and transparent 
+- Do checkins --> small and big
+- Approach relevant person if there is an issue
+- Communicate in group chat to prevent issues arising  
 
 ## Personal learning objectives (focus areas)
 
