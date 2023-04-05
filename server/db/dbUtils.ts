@@ -1,25 +1,25 @@
 import connection from './connection'
+import * as Models from '../../models/attendee'
+import * as Model from '../../models/meeting'
 
-// import { Types } from WHEREVER
-
-export function getAllMeetings(db = connection): Promise<Meeting[]> {
+export function getAllMeetings(db = connection): Promise<Model.Meeting[]> {
   return db('meetings').select('*')
 }
 
 export function addMeeting(
-  meeting: Meeting,
+  meeting: Model.Meeting,
   db = connection
-): Promise<Meeting> {
+): Promise<Model.Meeting> {
   return db('meetings').insert(meeting).returning(['*'])
 }
 
-export function getAllAttendees(db = connection): Promise<Attendee[]> {
+export function getAllAttendees(db = connection): Promise<Models.Attendee[]> {
   return db('meetings').select()
 }
 
 export function addAttendee(
-  attendee: Attendee,
+  attendee: Models.Attendee,
   db = connection
-): Promise<Attendee> {
+): Promise<Models.Attendee> {
   return db('meetings').insert(attendee).returning(['*'])
 }

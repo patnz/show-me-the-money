@@ -1,24 +1,26 @@
 import express from 'express'
-// import dbFunctions here
+import * as db from '../db/dbUtils'
 
 const router = express.Router()
 
 router.get('/', (res, req) => {
-  // getFunction
-  .then((attendeesData) => {
-    res.json(attendeesData)
-  }).catch((err) => {
-    res.status(500).send(err.message)
-  })
+  db.getAllAttendees()
+    .then((attendeesData) => {
+      res.json(attendeesData)
+    })
+    .catch((err) => {
+      res.status(500).send(err.message)
+    })
 })
 
 router.post('/', (res, req) => {
-  // sendFunction(req.body)
-  .then((attendeesData) => {
-    res.json(attendeesData)
-  }).catch((err) => {
-    res.status(500).send(err.message)
-  })
+  db.addAttendee(req.body)
+    .then((attendeesData) => {
+      res.json(attendeesData)
+    })
+    .catch((err) => {
+      res.status(500).send(err.message)
+    })
 })
 
 export default router
