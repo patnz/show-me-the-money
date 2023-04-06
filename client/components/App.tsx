@@ -5,7 +5,7 @@ import Nav from './Nav'
 import Meeting from './Meeting'
 import History from './History'
 import Welcome from './Welcome'
-import Getsalary from './Getsalary'
+import GetSalary from './GetSalary'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function App() {
@@ -30,7 +30,7 @@ function App() {
               <Route path="/" element={<Welcome />} />
               <Route path="/meeting" element={<Meeting />} />
               <Route path="/history" element={<History />} />
-              <Route path="/salary" element={<Getsalary />} />
+              <Route path="/salary" element={<GetSalary />} />
             </Routes>
           </IfAuthenticated>
         </div>
