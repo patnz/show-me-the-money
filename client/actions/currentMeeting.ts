@@ -30,7 +30,7 @@ export function endMeeting(): MeetingAction {
   }
 }
 
-export function tickOneSecond(): MeetingAction {
+export function updateRunningTotals(): MeetingAction {
   return {
     type: UPDATE_RUNNING_TOTALS,
     payload: null,

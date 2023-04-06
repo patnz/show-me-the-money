@@ -40,7 +40,10 @@ function updateRunningTotalsHelper(
   return { ...state, runningCost, runningDuration: timeDelta }
 }
 
-function meetingReducer(state = initialState, action: MeetingAction): object {
+function currentMeetingReducer(
+  state = initialState,
+  action: MeetingAction
+): object {
   const { type, payload } = action
 
   switch (type) {
@@ -62,4 +65,4 @@ function meetingReducer(state = initialState, action: MeetingAction): object {
   }
 }
 
-export default meetingReducer
+export default currentMeetingReducer
