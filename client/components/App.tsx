@@ -6,6 +6,7 @@ import Meeting from './Meeting'
 import History from './History'
 import Welcome from './Welcome'
 import Getsalary from './Getsalary'
+import Graph from './Graph'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
               <Route path="/meeting" element={<Meeting />} />
               <Route path="/history" element={<History />} />
               <Route path="/salary" element={<Getsalary />} />
+              <Route path="/graph" element={<Graph />} />
             </Routes>
           </IfAuthenticated>
         </div>

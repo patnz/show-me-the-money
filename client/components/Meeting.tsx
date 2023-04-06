@@ -4,7 +4,7 @@ import SetupMeeting from './SetupMeeting'
 function Meeting() {
   const meetingInProgress = true // placeholder
 
-  return meetingInProgress ? <ActiveMeeting /> : <SetupMeeting />
+  // return meetingInProgress ? <ActiveMeeting /> : <SetupMeeting />
 }
 
 export default Meeting
