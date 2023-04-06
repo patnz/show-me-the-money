@@ -46,6 +46,10 @@
       "bundle.js"
     ]
   },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
   "jest": {
     "setupFiles": [
       "./tests/setup-dotenv.js"
