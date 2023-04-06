@@ -1,20 +1,22 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { AttendeeInfo } from '../../models/attendee'
 
+type InputEvent = ChangeEvent<HTMLInputElement>
+
 function SetupMeeting() {
   const [meetingName, setMeetingName] = useState('')
   const [members, setMembers] = useState([] as AttendeeInfo[])
   const [newMember, setNewMember] = useState({
     name: '',
     wage: 0,
-  } as AttendeeInfo)
+  })
 
-  function submitHandler(e: FormEvent<HTMLFormElement>) {
+  const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     alert(`TODO: submit with name ${meetingName} and attendees ${members}`)
   }
 
-  function submitMember(e: FormEvent) {
+  const submitMember = (e: FormEvent) => {
     e.preventDefault()
     const wage = Number(newMember.wage)
     if (!Number.isNaN(wage)) {
@@ -24,15 +26,7 @@ function SetupMeeting() {
     }
   }
 
-  function changeMeeting(e: ChangeEvent<HTMLInputElement>) {
-    setMeetingName(e.target.value)
-  }
-
-  function changeMember(e: ChangeEvent<HTMLInputElement>) {
-    setNewMember({ ...newMember, [e.target.name]: e.target.value })
-  }
-
-  function removeMemberAtCB(idx: number) {
+  const removeMemberAtCB = (idx: number) => {
     return () => {
       setMembers(members.filter((_, i) => i !== idx))
     }
@@ -47,7 +41,7 @@ function SetupMeeting() {
           <input
             id="meeting-name"
             name="meeting-name"
-            onChange={changeMeeting}
+            onChange={(e: InputEvent) => setMeetingName(e.target.value)}
             value={meetingName}
           ></input>
         </label>
@@ -71,9 +65,11 @@ function SetupMeeting() {
           <input
             id="member-name"
             name="name"
-            onChange={changeMember}
+            onChange={(e: InputEvent) =>
+              setNewMember({ ...newMember, name: e.target.value })
+            }
             value={newMember.name}
-          ></input>
+          />
         </label>
         <label htmlFor="wage">
           Wage: $
@@ -81,9 +77,11 @@ function SetupMeeting() {
             id="member-wage"
             name="wage"
             pattern="[0-9]+(\.[0-9]{1,2})?"
-            onChange={changeMember}
+            onChange={(e: InputEvent) =>
+              setNewMember({ ...newMember, name: e.target.value })
+            }
             value={newMember.wage}
-          ></input>
+          />
         </label>
         <button>Add</button>
       </form>
