@@ -1,27 +1,26 @@
 import { Link } from 'react-router-dom'
+import { MeetingWithAttendees } from '../../models/meeting'
 import { useAppDispatch } from '../hooks'
 
-function OneMeeting(props: any) {
-  const dateString = new Date(props.date).toLocaleDateString()
+function OneMeeting(props: MeetingWithAttendees) {
+  const dateString = new Date(props.duration).toLocaleDateString()
 
   // const dispatch = useAppDispatch()a
 
-  const fakeClickHandler = () => {
-    console.log('clicked delete!')
+  const deleteMeeting = (id: number) => {
+    return () => {
+      // dispatchEvent(deleteMeetingThunk(id))
+    }
   }
-
-  // const deleteMeeting = (date: number) => {
-  //   dispatchEvent(deleteMeetingThunk(date))
-  // }
   //swap over when backend ready
 
   return (
     <>
       <div className="container has-text-centered">
-        <h3 className="title is-3">{props.title}</h3>
+        <h3 className="title is-3">{props.meeting_name}</h3>
         <p>Date: {dateString}</p>
-        <Link to={'/history/' + props.idNum}>More details...</Link>
-        <button onClick={() => fakeClickHandler()}>delete</button>
+        <Link to={'/history/' + props.id}>More details...</Link>
+        <button onClick={deleteMeeting(props.id)}>delete</button>
       </div>
     </>
   )
