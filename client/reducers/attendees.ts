@@ -8,10 +8,7 @@ import { Attendee } from '../../models/attendee'
 
 const initialState = [] as Attendee[]
 
-function attendeesReducer(
-  state = initialState,
-  action: AttendeesAction
-): Attendee[] {
+function attendees(state = initialState, action: AttendeesAction): Attendee[] {
   const { type, payload } = action
 
   switch (type) {
@@ -24,4 +21,4 @@ function attendeesReducer(
   }
 }
 
-export default attendeesReducer
+export default attendees
