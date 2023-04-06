@@ -10,7 +10,23 @@ function ActiveMeeting() {
     start_time: 1680570000000,
     total_cost: 789.3587594,
     attendees: 7,
-    attendee_data: ['john', 'jeff', 'joe'],
+    attendee_data: [
+      {
+        id: 1,
+        wage: 25,
+        name: 'Kelly',
+      },
+      {
+        id: 2,
+        wage: 25,
+        name: 'Shrena',
+      },
+      {
+        id: 3,
+        wage: 25,
+        name: 'Josh',
+      },
+    ],
   }
 
   const data = useAppSelector((state) => state.data)
@@ -21,29 +37,26 @@ function ActiveMeeting() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      console.log(meeting)
+      fakeData.duration += 1000
+      console.log(fakeData.duration)
       setMeeting({
         ...fakeData,
         duration: fakeData.duration + 1000,
       })
 
-      return (
-        
-      )
-
       //dispatch(data)
     }, 1000)
     return () => clearInterval(interval)
-  }, [meeting])
+  }, [])
 
   const dollars = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   }).format(fakeData.total_cost)
 
-    const hours = new Date(fakeData.duration).getHours()
-    const minutes = new Date(fakeData.duration).getMinutes()
-    const seconds = new Date(fakeData.duration).getSeconds()
+  const hours = new Date(fakeData.duration).getHours()
+  const minutes = new Date(fakeData.duration).getMinutes()
+  const seconds = new Date(fakeData.duration).getSeconds()
 
   const getHours = () => {
     if (hours > 12) {
@@ -84,7 +97,7 @@ function ActiveMeeting() {
         Attendees:
         <ul>
           {fakeData.attendee_data.map((e, i) => {
-            return <li key={i}>{e}</li>
+            return <li key={e.id}>{e.name}</li>
           })}
         </ul>
       </p>
