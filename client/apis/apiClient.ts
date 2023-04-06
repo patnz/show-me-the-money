@@ -5,18 +5,18 @@ const meetingRoute = '/api/meetings'
 
 export function APIGetAllMeetings() {
   return request
-    .get(meetingRoute + '/attendee-data')
+    .get(meetingRoute)
     .then((res) => {
       return res.body
     })
-    .then((meetings) =>
-      meetings.map((meeting: MeetingWithAttendeesInfo) => {
+    .then((meetings) => {
+      return meetings.map((meeting: MeetingWithAttendeesInfo) => {
         return {
           ...meeting,
           start_time: new Date(meeting.start_time),
         }
       })
-    )
+    })
 }
 
 export function APIAddMeeting(meeting: MeetingWithAttendeesInfo) {
