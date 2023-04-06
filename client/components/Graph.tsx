@@ -42,9 +42,9 @@ function Graph() {
     // 'July',
     // 'August',
     // 'September',
-    // 'October',
-    // 'November',
-    // 'December',
+    // // 'October',
+    // // 'November',
+    // // 'December',
   ]
 
   const data = {
