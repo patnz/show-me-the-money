@@ -3,6 +3,7 @@ import { useAppSelector } from '../hooks'
 import { APIGetAllMeetings } from '../apis/apiClient'
 import { MeetingWithAttendeesInfo } from '../../models/meeting'
 import { useState } from 'react'
+import Graph from './Graph'
 
 interface MeetingWithID extends MeetingWithAttendeesInfo {
   id: number
@@ -24,24 +25,27 @@ function History() {
     .catch((err) => console.log(err.message))
 
   return (
-    <div className="container">
-      <h2 className="title is-2">Meeting history</h2>
-      {meeting &&
-        meeting.map((meeting: MeetingWithID) => {
-          return (
-            <OneMeeting
-              key={meeting.id}
-              id={meeting.id}
-              meeting_name={meeting.meeting_name}
-              duration={meeting.duration}
-              start_time={meeting.start_time}
-              total_cost={meeting.total_cost}
-              attendees={meeting.attendees}
-              attendee_data={meeting.attendee_data}
-            />
-          )
-        })}
-    </div>
+    <>
+      <div className="container">
+        <h2 className="title is-2">Meeting history</h2>
+        {meeting &&
+          meeting.map((meeting: MeetingWithID) => {
+            return (
+              <OneMeeting
+                key={meeting.id}
+                id={meeting.id}
+                meeting_name={meeting.meeting_name}
+                duration={meeting.duration}
+                start_time={meeting.start_time}
+                total_cost={meeting.total_cost}
+                attendees={meeting.attendees}
+                attendee_data={meeting.attendee_data}
+              />
+            )
+          })}
+      </div>
+      <Graph />
+    </>
   )
 }
 
