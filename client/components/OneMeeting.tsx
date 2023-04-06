@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { MeetingWithAttendees } from '../../models/meeting'
 import { useAppDispatch } from '../hooks'
+import OneMeetingDetails from './OneMeetingDetails'
 
 function OneMeeting(props: MeetingWithAttendees) {
-  const dateString = new Date(props.duration).toLocaleDateString()
+  const dateString = new Date(props.start_time).toLocaleDateString()
 
   // const dispatch = useAppDispatch()a
 
