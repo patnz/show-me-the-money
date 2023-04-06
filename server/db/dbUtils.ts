@@ -1,17 +1,21 @@
 import connection from './connection'
-import * as Models from '../../models/attendee'
-import * as Model from '../../models/meeting'
+import {
+  MeetingWithAttendeesInfo,
+  Meeting,
+  MeetingWithAttendees,
+} from '../../models/meeting'
+import { Attendee } from '../../models/attendee'
 
 // meetings
 
-export function getAllMeetings(db = connection): Promise<Model.Meeting[]> {
+export function getAllMeetings(db = connection): Promise<Meeting[]> {
   return db('meetings').select('*')
 }
 
 export function addMeeting(
-  meeting: Model.Meeting,
+  meeting: Meeting,
   db = connection
-): Promise<Model.Meeting> {
+): Promise<Meeting> {
   return db('meetings')
     .insert(meeting)
     .returning(['*'])
@@ -24,14 +28,14 @@ export function delMeeting(id: number, db = connection): Promise<number> {
 
 // attendees
 
-export function getAllAttendees(db = connection): Promise<Models.Attendee[]> {
+export function getAllAttendees(db = connection): Promise<Attendee[]> {
   return db('attendees').select()
 }
 
 export function addAttendee(
-  attendee: Models.Attendee,
+  attendee: Attendee,
   db = connection
-): Promise<Models.Attendee> {
+): Promise<Attendee> {
   return db('attendees')
     .insert(attendee)
     .returning(['*'])
@@ -40,4 +44,14 @@ export function addAttendee(
 
 export function delAttendee(id: number, db = connection): Promise<number> {
   return db('attendees').where({ id }).del()
+}
+
+export function getAttendeesByMeetingId(
+  id: number,
+  db = connection
+): Promise<Attendee[]> {
+  return db('meeting_attendee')
+    .select('attendee_id AS id', 'wage', 'name')
+    .where('meeting_id', id)
+    .join('attendees', 'attendees.id', 'meeting_attendee.attendee_id')
 }
