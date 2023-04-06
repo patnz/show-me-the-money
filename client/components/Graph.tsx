@@ -2,6 +2,7 @@ import { Line } from 'react-chartjs-2'
 import Chart from 'chart.js/auto'
 
 function Graph() {
+  // REPLACE MEETING WITH REAL DATA
   const meetings = [
     {
       id: 1,
@@ -51,24 +52,6 @@ function Graph() {
     } as Record<number, number>
   )
 
-  console.log(totalByMonth)
-
-  // const monthified = meetings.map((el) => {
-  //   month = el.start_time.getMonth()
-  // })
-
-  // const yearArray = [[], [], [], [], [], [], [], [], [], [], [], []]
-
-  // meetings.map((el) => {
-  //   const monthIndex = el.start_time.getMonth()
-  //   yearArray[monthIndex - 1].push(el.total_cost)
-  // })
-
-  // 1. reassign start_time to the month i.e. 02 using .getMonth()
-  // 2. mapping over the meetings array, where the start_time property is 01, sum total_cost and push it to an empty array
-  // 3. do this 12 times for each month
-  // 4. we now have our data!
-
   const labels = [
     'January',
     'February',
@@ -97,18 +80,7 @@ function Graph() {
     ],
   }
 
-  Chart.register({
-    id: 'category',
-    parse: function (value) {
-      return value.toString()
-    },
-    isNumeric: false,
-    determineDataLimits: function () {},
-  })
-
-  meetings.forEach((meeting) => data.datasets[0].data.push(meeting.total_cost))
-
-  console.log(data)
+  Chart.register({})
 
   return (
     <>
