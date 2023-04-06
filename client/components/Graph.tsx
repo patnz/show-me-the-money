@@ -74,14 +74,14 @@ function Graph() {
     'February',
     'March',
     'April',
-    // 'May',
-    // 'June',
-    // 'July',
-    // 'August',
-    // 'September',
-    // // 'October',
-    // // 'November',
-    // // 'December',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ]
 
   const data = {
@@ -89,7 +89,7 @@ function Graph() {
     datasets: [
       {
         label: '2023 Google Meeting Costs',
-        data: [] as number[],
+        data: Object.values(totalByMonth),
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.2,
