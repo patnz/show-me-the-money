@@ -1,7 +1,7 @@
 import { useAuth0 } from '@auth0/auth0-react'
 
 function Login() {
-  const { logout, loginWithRedirect, user } = useAuth0()
+  const { loginWithRedirect } = useAuth0()
 
   return (
     <>
