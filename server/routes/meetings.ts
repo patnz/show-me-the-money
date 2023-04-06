@@ -14,6 +14,17 @@ router.get('/', (req, res) => {
     })
 })
 
+//gets MeetingWithAttendeesInfo[]
+router.get('/attendee-data', (req, res) => {
+  db.getMeetingsWithAttendees()
+    .then((meeetingsData) => {
+      res.json(meeetingsData)
+    })
+    .catch((err) => {
+      res.status(500).send(err.message)
+    })
+})
+
 router.post('/', (req, res) => {
   db.addMeeting(req.body)
     .then((meeetingsData) => {
