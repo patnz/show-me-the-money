@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import currentMeetingReducer from './currentMeeting'
-import meetingsReducer from './meetings'
-import usersReducer from './users'
+import currentMeeting from './currentMeeting'
+import meetings from './meetings'
+import attendees from './attendees'
 
 export default combineReducers({
-  currentMeetingReducer,
-  meetingsReducer,
-  usersReducer,
+  currentMeeting,
+  meetings,
+  attendees,
 })

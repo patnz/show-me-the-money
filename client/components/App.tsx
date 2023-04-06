@@ -5,9 +5,9 @@ import Nav from './Nav'
 import Meeting from './Meeting'
 import History from './History'
 import Welcome from './Welcome'
-import Getsalary from './Getsalary'
-import Graph from './Graph'
+import GetSalary from './GetSalary'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import Graph from './Graph'
 
 function App() {
   return (
@@ -31,7 +31,7 @@ function App() {
               <Route path="/" element={<Welcome />} />
               <Route path="/meeting" element={<Meeting />} />
               <Route path="/history" element={<History />} />
-              <Route path="/salary" element={<Getsalary />} />
+              <Route path="/salary" element={<GetSalary />} />
               <Route path="/graph" element={<Graph />} />
             </Routes>
           </IfAuthenticated>

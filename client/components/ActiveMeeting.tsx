@@ -1,5 +1,3 @@
-import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from '../../server/public/bundle'
-
 import { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../hooks'
 
@@ -29,9 +27,9 @@ function ActiveMeeting() {
     ],
   }
 
-  const data = useAppSelector((state) => state.data)
+  // const data = useAppSelector((state) => state.data)
 
-  const dispatch = useAppDispatch()
+  // const dispatch = useAppDispatch()
 
   const [meeting, setMeeting] = useState(fakeData)
 
