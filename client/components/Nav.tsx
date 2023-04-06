@@ -14,8 +14,11 @@ function Nav() {
   return (
     <nav className="navbar">
       <div className="container">
+        <IfAuthenticated>
+          <p className="subtitle is-primary">Welcome {user?.nickname}!</p>
+        </IfAuthenticated>
         <div className="navbar-brand">
-          <span
+          <button
             onClick={toggleBurger}
             className={`navbar-burger burger ${
               burgerVisible ? 'is-active' : ''
@@ -25,10 +28,7 @@ function Nav() {
             <span></span>
             <span></span>
             <span></span>
-          </span>
-          <IfAuthenticated>
-            <p className="subtitle">{user?.nickname}</p>
-          </IfAuthenticated>
+          </button>
         </div>
         <div
           id="navbarMenuHeroA"
@@ -36,8 +36,16 @@ function Nav() {
         >
           <div className="navbar-end">
             <IfAuthenticated>
-              <Link to="/meeting">Meeting</Link>
-              <Link to="/history">History</Link>
+              <Link className="button is-primary is-normal" to="/meeting">
+                Start meeting
+              </Link>
+
+              <Link className="button is-primary is-normal" to="/history">
+                Meeting history
+              </Link>
+              <Link className="button is-primary is-normal" to="/salary">
+                Salary
+              </Link>
               <button
                 className="button is-primary is-normal"
                 onClick={() => logout()}
@@ -46,6 +54,17 @@ function Nav() {
               </button>
             </IfAuthenticated>
             <IfNotAuthenticated>
+              <Link className="button is-primary is-normal" to="/meeting">
+                Start meeting
+              </Link>
+
+              <Link className="button is-primary is-normal" to="/history">
+                Meeting history
+              </Link>
+              <Link className="button is-primary is-normal" to="/salary">
+                Salary
+              </Link>
+
               <button
                 className="button is-primary is-normal"
                 onClick={() => loginWithRedirect()}

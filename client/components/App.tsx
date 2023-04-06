@@ -34,6 +34,14 @@ function App() {
             <Login />
           </IfNotAuthenticated>
 
+<<<<<<< HEAD
+          <Routes>
+            <Route path="/" element={<Welcome />} />
+            <Route path="/meeting" element={<Meeting />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/salary" element={<GetSalary />} />
+          </Routes>
+=======
           <IfAuthenticated>
             <Routes>
               <Route path="/" element={<Welcome />} />
@@ -43,6 +51,7 @@ function App() {
               <Route path="/salary" element={<GetSalary />} />
             </Routes>
           </IfAuthenticated>
+>>>>>>> 706190e7f15456cc689627d1637b4fc279cda919
         </div>
       </div>
     </>
