@@ -8,7 +8,7 @@ exports.up = function (knex) {
     table.string('meeting_name')
     table.integer('duration')
     table.date('start_time')
-    table.integer('total_cost')
+    table.decimal('total_cost')
     table.integer('attendees')
   })
 }
