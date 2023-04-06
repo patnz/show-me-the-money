@@ -1,5 +1,8 @@
 import { __SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED } from '../../server/public/bundle'
 
+import { useEffect, useState } from 'react'
+import { useAppSelector, useAppDispatch } from '../hooks'
+
 function ActiveMeeting() {
   const fakeData = {
     meeting_name: 'Google meet',
@@ -10,14 +13,37 @@ function ActiveMeeting() {
     attendee_data: ['john', 'jeff', 'joe'],
   }
 
+  const data = useAppSelector((state) => state.data)
+
+  const dispatch = useAppDispatch()
+
+  const [meeting, setMeeting] = useState(fakeData)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      console.log(meeting)
+      setMeeting({
+        ...fakeData,
+        duration: fakeData.duration + 1000,
+      })
+
+      return (
+        
+      )
+
+      //dispatch(data)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [meeting])
+
   const dollars = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   }).format(fakeData.total_cost)
 
-  const hours = new Date(fakeData.duration).getHours()
-  const minutes = new Date(fakeData.duration).getMinutes()
-  const seconds = new Date(fakeData.duration).getSeconds()
+    const hours = new Date(fakeData.duration).getHours()
+    const minutes = new Date(fakeData.duration).getMinutes()
+    const seconds = new Date(fakeData.duration).getSeconds()
 
   const getHours = () => {
     if (hours > 12) {
