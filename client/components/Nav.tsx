@@ -54,7 +54,6 @@ function Nav() {
               </button>
             </IfAuthenticated>
             <IfNotAuthenticated>
-              {/* THESE ARE AVAILABLE DURING DEVELOPMENT */}
               <Link className="button is-primary is-normal" to="/meeting">
                 Start meeting
               </Link>
@@ -65,7 +64,6 @@ function Nav() {
               <Link className="button is-primary is-normal" to="/salary">
                 Salary
               </Link>
-              {/* THESE ARE AVAILABLE DURING DEVELOPMENT */}
 
               <button
                 className="button is-primary is-normal"
