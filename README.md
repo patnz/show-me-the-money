@@ -169,7 +169,7 @@ As a user:
   | --- | --- |
   | currentMeeting | Track meeting progress such as current cost and current duration |
   | meetings | store the list of meetings the user has attended in the past |
-  | users | store the list of users who can attend meetings |
+  | attendees | store the list of attendees who can attend meetings |
 
  ## Actions
 
@@ -185,9 +185,15 @@ As a user:
   | type | data | purpose |
 | --- | --- | --- |
 | START_MEETING | attendees ([]), meeting_name | a meeting has started, set initial meeting state |
-| END_MEETING | null | Set meeting in progress flag to false |  
-| TICK_ONE_SECOND | null | Increase running total by 1s worth of $ |
-| RESET_MEETING | null | Revert to initial state |
+| UPDATE_RUNNING_TOTAL | null | Ubdate running totals based on current time |
+| END_MEETING | null | Revert to initial state |
+
+ ### attendees
+
+ | type | data | purpose |
+ | --- | --- | --- |
+ | RECEIVE_ATTENDEES | attendees | retrieve attendees from the db and store in redux |
+ | ADD_ATTENDEE | attendee | Add a single attendee to the store after it is created |
 
 
 
