@@ -195,13 +195,14 @@ As a user:
 
 | Method | Endpoint | Protected | Usage | Response |
 | --- | --- | --- | --- | --- |
-| Get | /api/meetings | Yes | Get a Users Meeting Histroy | An Array of Meetings |
+| Get | /api/meetings | Yes | Get a Users Meeting History | An Array of Meetings |
 | Post | /api/meetings | Yes | Save a completed meeting | The Meeting that has been saved in db read format |
 
 ## DB (Server Side)
   There should be two tables for MVP. You may want/need to add additional columns and tables.
 
 ### Meetings
+#### Table name: meetings
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
@@ -212,13 +213,22 @@ As a user:
   | total_cost | Decimal |
 
 ### Attendees
+#### Table name: attendees
 
  | Column Name | Data Type |
  | --- | --- |
  | id | Integer |
  | name | String |
  | wage | Decimal |
+ 
+### Meetings and Attendees 
+#### Table name: meeting_attendee
+
+ | Column Name | Data Type |
+ | --- | --- |
+ | id | Integer(Increments) |
  | meeting_id | Integer |
+ | attendee_id | Integer |
 
  ---
 ## Authentication
