@@ -3,8 +3,9 @@ import {
   MeetingWithAttendeesInfo,
   Meeting,
   MeetingWithAttendees,
+  MeetingInfo,
 } from '../../models/meeting'
-import { Attendee } from '../../models/attendee'
+import { Attendee, AttendeeInfo } from '../../models/attendee'
 
 // meetings
 
@@ -12,8 +13,15 @@ export function getAllMeetings(db = connection): Promise<Meeting[]> {
   return db('meetings').select('*')
 }
 
+export function getOneMeetingById(
+  id: number,
+  db = connection
+): Promise<Meeting> {
+  return db('meetings').select('*').where('id', id).first()
+}
+
 export function addMeeting(
-  meeting: Meeting,
+  meeting: MeetingInfo,
   db = connection
 ): Promise<Meeting> {
   return db('meetings')
@@ -33,7 +41,7 @@ export function getAllAttendees(db = connection): Promise<Attendee[]> {
 }
 
 export function addAttendee(
-  attendee: Attendee,
+  attendee: AttendeeInfo,
   db = connection
 ): Promise<Attendee> {
   return db('attendees')
@@ -54,4 +62,17 @@ export function getAttendeesByMeetingId(
     .select('attendee_id AS id', 'wage', 'name')
     .where('meeting_id', id)
     .join('attendees', 'attendees.id', 'meeting_attendee.attendee_id')
+}
+
+// meeting_attendee
+
+export function relateMeetingAndAttendee(
+  meetingId: number,
+  attendeeId: number,
+  db = connection
+) {
+  return db('meeting_attendee').insert({
+    meeting_id: meetingId,
+    attendee_id: attendeeId,
+  })
 }
