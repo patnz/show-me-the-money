@@ -29,7 +29,7 @@ function ActiveMeeting() {
 
   const data = useAppSelector((state) => state.data)
 
-  const dispatch = useAppDispatch()
+  //const dispatch = useAppDispatch()
 
   const [meeting, setMeeting] = useState(fakeData)
 
