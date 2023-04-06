@@ -8,8 +8,16 @@ import Welcome from './Welcome'
 import GetSalary from './GetSalary'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 import Graph from './Graph'
+import { thunkGetMeetings } from '../actions/meetings'
+import { useEffect } from 'react'
+import { useAppDispatch } from '../hooks'
 
 function App() {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(thunkGetMeetings())
+  }, [dispatch])
   return (
     <>
       <div className="container has-text-centered">
