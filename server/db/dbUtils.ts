@@ -55,22 +55,3 @@ export function getAttendeesByMeetingId(
     .where('meeting_id', id)
     .join('attendees', 'attendees.id', 'meeting_attendee.attendee_id')
 }
-
-export async function getMeetingsWithAttendees(): Promise<
-  MeetingWithAttendeesInfo[]
-> {
-  const meetings = await getAllMeetings()
-
-  const newMeetingsArr = [] as MeetingWithAttendees[]
-
-  for (const meeting of meetings) {
-    const currentId = meeting.id
-
-    const currentAttendees = await getAttendeesByMeetingId(currentId)
-
-    const newMeetingObj = { ...meeting, attendee_data: currentAttendees }
-
-    newMeetingsArr.push(newMeetingObj)
-  }
-  return newMeetingsArr
-}
