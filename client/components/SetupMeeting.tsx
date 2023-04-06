@@ -1,5 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { AttendeeInfo } from '../../models/attendee'
+import { startMeeting } from '../actions/currentMeeting'
+import { useAppDispatch } from '../hooks'
 
 type InputEvent = ChangeEvent<HTMLInputElement>
 
@@ -8,12 +10,13 @@ function SetupMeeting() {
   const [members, setMembers] = useState([] as AttendeeInfo[])
   const [newMember, setNewMember] = useState({
     name: '',
-    wage: 0,
+    wage: '0',
   })
+  const dispatch = useAppDispatch()
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    alert(`TODO: submit with name ${meetingName} and attendees ${members}`)
+    dispatch(startMeeting({ attendess: members, meeting_name: meetingName }))
   }
 
   const submitMember = (e: FormEvent) => {
@@ -22,7 +25,7 @@ function SetupMeeting() {
     if (!Number.isNaN(wage)) {
       const { name } = newMember
       setMembers([...members, { name, wage }])
-      setNewMember({ name: '', wage: 0 })
+      setNewMember({ name: '', wage: '0' })
     }
   }
 
@@ -43,7 +46,7 @@ function SetupMeeting() {
             name="meeting-name"
             onChange={(e: InputEvent) => setMeetingName(e.target.value)}
             value={meetingName}
-          ></input>
+          />
         </label>
         <p>Planned attendees:</p>
         <ul>
@@ -78,7 +81,7 @@ function SetupMeeting() {
             name="wage"
             pattern="[0-9]+(\.[0-9]{1,2})?"
             onChange={(e: InputEvent) =>
-              setNewMember({ ...newMember, name: e.target.value })
+              setNewMember({ ...newMember, wage: e.target.value })
             }
             value={newMember.wage}
           />
