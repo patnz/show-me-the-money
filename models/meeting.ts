@@ -1,4 +1,4 @@
-import { Attendee } from './attendee'
+import { Attendee, AttendeeInfo } from './attendee'
 
 export interface MeetingInfo {
   meeting_name: string
@@ -9,13 +9,13 @@ export interface MeetingInfo {
 }
 
 export interface MeetingWithAttendeesInfo extends MeetingInfo {
-  attendee_data: Attendee[]
+  attendee_data: AttendeeInfo[]
 }
 
 export interface Meeting extends MeetingInfo {
   id: number
 }
 
-export interface MeetingWithAttendees extends MeetingWithAttendeesInfo {
-  id: number
+export interface MeetingWithAttendees extends Meeting {
+  attendee_data: Attendee[]
 }
