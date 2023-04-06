@@ -20,7 +20,7 @@ function OneMeeting(props: any) {
       <div className="container has-text-centered">
         <h3 className="title is-3">{props.title}</h3>
         <p>Date: {dateString}</p>
-        <Link to={'/history/' + props.date}>More details...</Link>
+        <Link to={'/history/' + props.idNum}>More details...</Link>
         <button onClick={() => fakeClickHandler()}>delete</button>
       </div>
     </>
