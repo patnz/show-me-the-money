@@ -40,7 +40,6 @@ function App() {
               <Route path="/meeting" element={<Meeting />} />
               <Route path="/history" element={<History />} />
               <Route path="/salary" element={<GetSalary />} />
-              <Route path="/graph" element={<Graph />} />
             </Routes>
           </IfAuthenticated>
         </div>
