@@ -3,35 +3,7 @@ import Chart from 'chart.js/auto'
 import { useAppSelector } from '../hooks'
 
 function Graph() {
-  // REPLACE MEETING WITH REAL DATA
-
-  const meetings = [
-    {
-      id: 1,
-      meeting_name: 'talking about isaac',
-      duration: 3600000,
-      start_time: new Date(1680570000000),
-      total_cost: 13234,
-      attendees: 4,
-    },
-    {
-      id: 2,
-      meeting_name: 'talking about pat',
-      duration: 3600000,
-      start_time: new Date(1677981600000),
-      total_cost: 20145,
-      attendees: 2,
-    },
-    {
-      id: 3,
-      meeting_name: 'fun time',
-      duration: 3600000,
-      start_time: new Date(1680292800000),
-      total_cost: 54132,
-      attendees: 3,
-    },
-  ]
-
+  const meetings = useAppSelector((globalState) => globalState.meetings)
   const totalByMonth = meetings.reduce(
     (accumulator, oneMeeting) => {
       const month = oneMeeting.start_time.getMonth()
