@@ -29,7 +29,7 @@ router.delete('/:id', (req, res) => {
       res.sendStatus(200)
     })
     .catch((err) => {
-      console.log(err.message)
+      res.status(500).send(err.message)
     })
 })
 
