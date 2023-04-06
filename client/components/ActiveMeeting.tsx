@@ -36,7 +36,7 @@ function ActiveMeeting() {
   useEffect(() => {
     const interval = setInterval(() => {
       fakeData.duration += 1000
-      console.log(fakeData.duration)
+      // console.log(fakeData.duration)
       setMeeting({
         ...fakeData,
         duration: fakeData.duration + 1000,
@@ -79,14 +79,6 @@ function ActiveMeeting() {
       return seconds
     }
   }
-
-  // const getAmPm = () => {
-  //   if (hours > 12) {
-  //     return 'pm'
-  //   } else {
-  //     return 'am'
-  //   }
-  // } just leaving here cause its hype
 
   return (
     <>
