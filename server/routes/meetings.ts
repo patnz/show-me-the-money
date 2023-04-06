@@ -1,5 +1,6 @@
 import express from 'express'
 import * as db from '../db/dbUtils'
+import { getMeetingsWithAttendees } from './funcs'
 // import dbFunctions here
 
 const router = express.Router()
@@ -16,7 +17,7 @@ router.get('/', (req, res) => {
 
 //gets MeetingWithAttendeesInfo[]
 router.get('/attendee-data', (req, res) => {
-  db.getMeetingsWithAttendees()
+  getMeetingsWithAttendees()
     .then((meeetingsData) => {
       res.json(meeetingsData)
     })
