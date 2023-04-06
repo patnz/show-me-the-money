@@ -36,12 +36,6 @@ function Nav() {
         >
           <div className="navbar-end">
             <IfAuthenticated>
-              <button
-                className="button is-primary is-normal"
-                onClick={() => logout()}
-              >
-                Logout
-              </button>
               <Link className="button is-primary is-normal" to="/meeting">
                 Start meeting
               </Link>
@@ -49,21 +43,36 @@ function Nav() {
               <Link className="button is-primary is-normal" to="/history">
                 Meeting history
               </Link>
-              {/* <Link className="button is-primary is-normal" to="/salary">
+              <Link className="button is-primary is-normal" to="/salary">
                 Salary
-              </Link> */}
+              </Link>
+              <button
+                className="button is-primary is-normal"
+                onClick={() => logout()}
+              >
+                Logout
+              </button>
             </IfAuthenticated>
             <IfNotAuthenticated>
+              {/* THESE ARE AVAILABLE DURING DEVELOPMENT */}
+              <Link className="button is-primary is-normal" to="/meeting">
+                Start meeting
+              </Link>
+
+              <Link className="button is-primary is-normal" to="/history">
+                Meeting history
+              </Link>
+              <Link className="button is-primary is-normal" to="/salary">
+                Salary
+              </Link>
+              {/* THESE ARE AVAILABLE DURING DEVELOPMENT */}
+
               <button
                 className="button is-primary is-normal"
                 onClick={() => loginWithRedirect()}
               >
                 Login
               </button>
-
-              <Link to="/meeting">Start meeting</Link>
-
-              <Link to="history">Meeting history</Link>
             </IfNotAuthenticated>
           </div>
         </div>
