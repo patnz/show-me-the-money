@@ -8,6 +8,7 @@ function History() {
 
   const fakeDataArr = [
     {
+      id: 1,
       meeting_name: 'Meeting One',
       duration: 10,
       start_time: d1,
@@ -15,6 +16,7 @@ function History() {
       attendees: 10,
     },
     {
+      id: 2,
       meeting_name: 'Meeting Two',
       duration: 10,
       start_time: d2,
@@ -22,6 +24,7 @@ function History() {
       attendees: 10,
     },
     {
+      id: 3,
       meeting_name: 'Meeting Three',
       duration: 10,
       start_time: d3,
@@ -37,7 +40,8 @@ function History() {
       {fakeDataArr.map((e) => {
         return (
           <OneMeeting
-            key={e.start_time}
+            key={e.id}
+            idNum={e.id}
             title={e.meeting_name}
             duration={e.duration}
             date={e.start_time}
