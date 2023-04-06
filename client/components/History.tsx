@@ -1,33 +1,27 @@
 import OneMeeting from './OneMeeting'
-import { useAppSelector } from '../hooks'
-import { APIGetAllMeetings } from '../apis/apiClient'
-import { MeetingWithAttendeesInfo } from '../../models/meeting'
-import { useState } from 'react'
+import { useAppDispatch, useAppSelector } from '../hooks'
+import { MeetingWithAttendees } from '../../models/meeting'
+import { useEffect } from 'react'
+import { thunkGetMeetings } from '../actions/meetings'
 
-interface MeetingWithID extends MeetingWithAttendeesInfo {
+interface MeetingWithID extends MeetingWithAttendees {
   id: number
 }
 
 function History() {
-  const d1 = new Date().getTime()
-  const d2 = d1 - 100000000
-  const d3 = d1 - 200000000
+  const meetings = useAppSelector((store) => store.meetings)
 
-  //Old fake data calculation
+  const dispatch = useAppDispatch()
 
-  const [meeting, setMeeting] = useState(
-    null as MeetingWithAttendeesInfo | null
-  )
-
-  APIGetAllMeetings()
-    .then((res) => setMeeting(res))
-    .catch((err) => console.log(err.message))
+  useEffect(() => {
+    dispatch(thunkGetMeetings())
+  }, [dispatch])
 
   return (
     <div className="container">
       <h2 className="title is-2">Meeting history</h2>
-      {meeting &&
-        meeting.map((meeting: MeetingWithID) => {
+      {meetings &&
+        meetings.map((meeting: MeetingWithID) => {
           return (
             <OneMeeting
               key={meeting.id}
