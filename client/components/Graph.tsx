@@ -27,6 +27,9 @@ function Graph() {
       total_cost: 54132,
       attendees: 3,
     },
+    {
+      total_cost: 52134,
+    },
   ]
 
   const labels = [
