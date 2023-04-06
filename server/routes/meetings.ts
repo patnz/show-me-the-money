@@ -4,18 +4,8 @@ import * as utils from '../db/dbUtils'
 
 const router = express.Router()
 
-router.get('/', (req, res) => {
-  db.getAllMeetings()
-    .then((meetingsData) => {
-      res.json(meetingsData)
-    })
-    .catch((err) => {
-      res.status(500).send(err.message)
-    })
-})
-
 //gets MeetingWithAttendeesInfo[]
-router.get('/attendee-data', (req, res) => {
+router.get('/', (req, res) => {
   utils
     .getMeetingsWithAttendees()
     .then((meeetingsData) => {
@@ -26,10 +16,12 @@ router.get('/attendee-data', (req, res) => {
     })
 })
 
+//add MeetingWithAttendeesInfo as meeting and attendees to db
 router.post('/', (req, res) => {
-  db.addMeeting(req.body)
-    .then((meetingsData) => {
-      res.json(meetingsData)
+  utils
+    .addMeetingWithAttendees(req.body)
+    .then((meetingData) => {
+      res.json(meetingData)
     })
     .catch((err) => {
       res.status(500).send(err.message)

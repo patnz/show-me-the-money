@@ -1,12 +1,14 @@
 import request from 'superagent'
 import { MeetingWithAttendeesInfo } from '../../models/meeting'
 
-const meetingRoute = '/api/v1/meetings'
+const meetingRoute = '/api/meetings'
 
 export function APIGetAllMeetings() {
   return request
     .get(meetingRoute + '/attendee-data')
-    .then((res) => res.body)
+    .then((res) => {
+      return res.body
+    })
     .then((meetings) =>
       meetings.map((meeting: MeetingWithAttendeesInfo) => {
         return {
