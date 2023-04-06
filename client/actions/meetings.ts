@@ -1,5 +1,10 @@
 import type { ThunkAction } from '../store'
-import { MeetingWithAttendees } from '../../models/meeting'
+import {
+  MeetingWithAttendees,
+  MeetingWithAttendeesInfo,
+} from '../../models/meeting'
+import { APIAddMeeting } from '../apis/apiClient'
+import { endMeeting } from './currentMeeting'
 import { APIGetAllMeetings } from '../apis/apiClient'
 
 export const RECEIVE_MEETINGS = 'RECEIVE_MEETINGS'
@@ -25,12 +30,27 @@ export function addMeeting(meeting: MeetingWithAttendees): MeetingsAction {
   }
 }
 
+// ** THUNKS ** \\
+
+export function addMeetingThunk(
+  meeting: MeetingWithAttendeesInfo
+): ThunkAction {
+  return (dispatch) => {
+    return APIAddMeeting(meeting).then(
+      (returnedMeeting: MeetingWithAttendees) => {
+        dispatch(addMeeting(returnedMeeting))
+        dispatch(endMeeting)
+      }
+    )
+  }
+}
+
 export function thunkGetMeetings(): ThunkAction {
   return (dispatch) => {
     return APIGetAllMeetings()
-      .then((meetings) => {
+      .then((meetings: MeetingWithAttendees[]) => {
         dispatch(receiveMeetings(meetings))
       })
-      .catch((err) => console.log(err.message))
+      .catch((err: Error) => console.log(err.message))
   }
 }
