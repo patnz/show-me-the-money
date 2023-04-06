@@ -3,11 +3,10 @@ import {
   START_MEETING,
   END_MEETING,
   UPDATE_RUNNING_TOTALS,
-  // RESET_MEETING,
 } from '../actions/currentMeeting'
-import { Attendee } from '../../models/attendee'
+import { AttendeeInfo } from '../../models/attendee'
 
-interface CurrentMeetingInfo extends StartMeetingPayload {
+export interface CurrentMeetingInfo extends StartMeetingPayload {
   start_time: Date
   inProgress: boolean
   runningCost: number
@@ -16,7 +15,7 @@ interface CurrentMeetingInfo extends StartMeetingPayload {
 
 export interface StartMeetingPayload {
   meeting_name: string
-  attendess: Attendee[]
+  attendess: AttendeeInfo[]
 }
 
 const initialState = {
@@ -26,7 +25,7 @@ const initialState = {
   attendess: [],
   runningCost: 0,
   runningDuration: 0,
-} as CurrentMeetingInfo
+}
 
 function updateRunningTotalsHelper(
   state: CurrentMeetingInfo
