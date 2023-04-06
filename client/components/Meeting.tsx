@@ -1,10 +1,14 @@
+import { useAppSelector } from '../hooks'
+import { CurrentMeetingInfo } from '../reducers/currentMeeting'
 import ActiveMeeting from './ActiveMeeting'
 import SetupMeeting from './SetupMeeting'
 
 function Meeting() {
-  const meetingInProgress = true // placeholder
+  const currentMeeting: CurrentMeetingInfo = useAppSelector(
+    (state) => state.currentMeeting
+  )
 
-  return meetingInProgress ? <ActiveMeeting /> : <SetupMeeting />
+  return currentMeeting.inProgress ? <ActiveMeeting /> : <SetupMeeting />
 }
 
 export default Meeting
