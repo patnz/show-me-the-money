@@ -8,7 +8,7 @@ import { MeetingWithAttendees } from '../../models/meeting'
 
 const initialState = [] as MeetingWithAttendees[]
 
-function meetingsReducer(
+function meetings(
   state = initialState,
   action: MeetingsAction
 ): MeetingWithAttendees[] {
@@ -24,4 +24,4 @@ function meetingsReducer(
   }
 }
 
-export default meetingsReducer
+export default meetings
