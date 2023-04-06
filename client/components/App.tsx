@@ -1,11 +1,12 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from 'react-router-dom'
 
-import Login from "./Login";
-import Nav from "./Nav";
-import Meeting from "./Meeting";
-import History from "./History";
-import Welcome from "./Welcome";
-import { IfAuthenticated, IfNotAuthenticated } from "./Authenticated";
+import Login from './Login'
+import Nav from './Nav'
+import Meeting from './Meeting'
+import History from './History'
+import Welcome from './Welcome'
+import GetSalary from './GetSalary'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
 
 function App() {
   return (
@@ -24,17 +25,18 @@ function App() {
             <Login />
           </IfNotAuthenticated>
 
-          <IfAuthenticated>
-            <Routes>
-              <Route path="/" element={<Welcome />} />
-              <Route path="/meeting" element={<Meeting />} />
-              <Route path="/history" element={<History />} />
-            </Routes>
-          </IfAuthenticated>
+          <Routes>
+            <Route path="/" element={<Welcome />} />
+            <Route path="/meeting" element={<Meeting />} />
+            <Route path="/history" element={<History />} />
+            <Route path="/salary" element={<GetSalary />} />
+          </Routes>
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App
+
+// Incorporate Getsalary when we can check if they have a salary already in global state to avoid asking every time

@@ -1,9 +1,14 @@
+import ActiveMeeting from './ActiveMeeting'
+import SetupMeeting from './SetupMeeting'
+
 function Meeting() {
-  return (
-    <div className="container">
-      <h2 className="title is-2">Start Meeting</h2>
-    </div>
-  );
+  const meetingInProgress = true // placeholder
+
+  return meetingInProgress ? <ActiveMeeting /> : <SetupMeeting />
 }
 
-export default Meeting;
+export default Meeting
+
+// // start with a simple ternary - if meeting not running show setup form else show meeting in progress
+// // name, list of attendees, form for adding and removing attendees
+// // send all data to reducer
