@@ -1,9 +1,5 @@
-import type { ThunkAction } from 'redux-thunk'
-import {
-  MeetingInfo,
-  MeetingWithAttendees,
-  MeetingWithAttendeesInfo,
-} from '../../models/meeting'
+import type { ThunkAction } from '../store'
+import { MeetingWithAttendees } from '../../models/meeting'
 
 export const RECEIVE_MEETINGS = 'RECEIVE_MEETINGS'
 export const ADD_MEETING = 'ADD_MEETING'
