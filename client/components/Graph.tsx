@@ -8,7 +8,7 @@ function Graph() {
       meeting_name: 'talking about isaac',
       duration: 3600000,
       start_time: 1680570000000,
-      total_cost: null,
+      total_cost: 13234,
       attendees: 4,
     },
     {
@@ -16,7 +16,7 @@ function Graph() {
       meeting_name: 'talking about pat',
       duration: 3600000,
       start_time: 1677981600000,
-      total_cost: null,
+      total_cost: 20145,
       attendees: 2,
     },
     {
@@ -24,30 +24,46 @@ function Graph() {
       meeting_name: 'fun time',
       duration: 3600000,
       start_time: 1680292800000,
-      total_cost: null,
+      total_cost: 54132,
       attendees: 3,
     },
   ]
 
   const labels = [
-    'Monday',
-    'Tuesday',
-    'Wednesday',
-    'Thursday',
-    'Friday',
-    'Saturday',
-    'Sunday',
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
   ]
+
+  // Rewrite using `${meeting_name} cost` for dataset labels, total_cost for data, within a map generating a random colour for the border
   const data = {
     labels: labels,
     datasets: [
-      {
-        label: 'Week of 3rd April 2023 Meeting Costs',
-        data: [65, 59, 80, 81, 56, 55, 40],
-        fill: false,
-        borderColor: 'rgb(75, 192, 192)',
-        tension: 0.1,
-      },
+      meetings.map((meeting) => {
+        return {
+          label: `Meeting "${meeting.meeting_name}" cost`,
+          data: meeting.total_cost,
+          fill: false,
+          borderColor: '', //Random colour,
+          tension: 0.2,
+        }
+      }),
+      // {
+      //   label: '2023 Google Meeting Costs',
+      //   data: [] as number[],
+      //   fill: false,
+      //   borderColor: 'rgb(75, 192, 192)',
+      //   tension: 0.2,
+      // },
     ],
   }
 
@@ -59,6 +75,13 @@ function Graph() {
     isNumeric: false,
     determineDataLimits: function () {},
   })
+
+  meetings.forEach((meeting) => data.datasets[0].data.push(meeting.total_cost))
+  meetings.forEach((meeting) =>
+    data.datasets[1].data.push(meeting.meeting_name)
+  )
+
+  console.log(data)
 
   return (
     <>
