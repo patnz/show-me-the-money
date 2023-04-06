@@ -13,6 +13,8 @@ function History() {
   const d2 = d1 - 100000000
   const d3 = d1 - 200000000
 
+  //Old fake data calculation
+
   const [meeting, setMeeting] = useState(
     null as MeetingWithAttendeesInfo | null
   )
