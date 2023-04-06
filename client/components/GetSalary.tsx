@@ -22,7 +22,7 @@ function Getsalary() {
           name="salary"
           value={salary}
           onChange={changeHandler}
-        ></input>
+        />
       </label>
       <button type="submit">Submit</button>
     </form>
