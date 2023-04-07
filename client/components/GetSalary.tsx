@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 
-function Getsalary() {
+function GetSalary() {
   const [salary, setSalary] = useState(0)
 
   function submitHandler(e: FormEvent<HTMLFormElement>) {
@@ -29,4 +29,4 @@ function Getsalary() {
   )
 }
 
-export default Getsalary
+export default GetSalary
