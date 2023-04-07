@@ -1,13 +1,23 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, Link } from 'react-router-dom'
 
-import Login from "./Login";
-import Nav from "./Nav";
-import Meeting from "./Meeting";
-import History from "./History";
-import Welcome from "./Welcome";
-import { IfAuthenticated, IfNotAuthenticated } from "./Authenticated";
+import Login from './Login'
+import Nav from './Nav'
+import Meeting from './Meeting'
+import History from './History'
+import Welcome from './Welcome'
+import GetSalary from './GetSalary'
+import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import { thunkGetMeetings } from '../actions/meetings'
+import { useEffect } from 'react'
+import { useAppDispatch } from '../hooks'
 
 function App() {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(thunkGetMeetings())
+  }, [dispatch])
+
   return (
     <>
       <div className="container has-text-centered">
@@ -29,12 +39,13 @@ function App() {
               <Route path="/" element={<Welcome />} />
               <Route path="/meeting" element={<Meeting />} />
               <Route path="/history" element={<History />} />
+              <Route path="/salary" element={<GetSalary />} />
             </Routes>
           </IfAuthenticated>
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

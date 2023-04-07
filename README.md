@@ -169,7 +169,7 @@ As a user:
   | --- | --- |
   | currentMeeting | Track meeting progress such as current cost and current duration |
   | meetings | store the list of meetings the user has attended in the past |
-  | users | store the list of users who can attend meetings |
+  | attendees | store the list of attendees who can attend meetings |
 
  ## Actions
 
@@ -185,9 +185,15 @@ As a user:
   | type | data | purpose |
 | --- | --- | --- |
 | START_MEETING | attendees ([]), meeting_name | a meeting has started, set initial meeting state |
-| END_MEETING | null | Set meeting in progress flag to false |  
-| TICK_ONE_SECOND | null | Increase running total by 1s worth of $ |
-| RESET_MEETING | null | Revert to initial state |
+| UPDATE_RUNNING_TOTAL | null | Ubdate running totals based on current time |
+| END_MEETING | null | Revert to initial state |
+
+ ### attendees
+
+ | type | data | purpose |
+ | --- | --- | --- |
+ | RECEIVE_ATTENDEES | attendees | retrieve attendees from the db and store in redux |
+ | ADD_ATTENDEE | attendee | Add a single attendee to the store after it is created |
 
 
 
@@ -195,13 +201,14 @@ As a user:
 
 | Method | Endpoint | Protected | Usage | Response |
 | --- | --- | --- | --- | --- |
-| Get | /api/meetings | Yes | Get a Users Meeting Histroy | An Array of Meetings |
+| Get | /api/meetings | Yes | Get a Users Meeting History | An Array of Meetings |
 | Post | /api/meetings | Yes | Save a completed meeting | The Meeting that has been saved in db read format |
 
 ## DB (Server Side)
   There should be two tables for MVP. You may want/need to add additional columns and tables.
 
 ### Meetings
+#### Table name: meetings
   | Column Name | Data Type |
   | --- | --- |
   | id | Integer |
@@ -212,13 +219,22 @@ As a user:
   | total_cost | Decimal |
 
 ### Attendees
+#### Table name: attendees
 
  | Column Name | Data Type |
  | --- | --- |
  | id | Integer |
  | name | String |
  | wage | Decimal |
+ 
+### Meetings and Attendees 
+#### Table name: meeting_attendee
+
+ | Column Name | Data Type |
+ | --- | --- |
+ | id | Integer(Increments) |
  | meeting_id | Integer |
+ | attendee_id | Integer |
 
  ---
 ## Authentication
