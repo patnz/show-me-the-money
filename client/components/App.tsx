@@ -18,6 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(thunkGetMeetings())
   }, [dispatch])
+
   return (
     <>
       <div className="container has-text-centered">
@@ -50,5 +51,3 @@ function App() {
 }
 
 export default App
-
-// Incorporate Getsalary when we can check if they have a salary already in global state to avoid asking every time

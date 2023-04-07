@@ -3,17 +3,7 @@ import { MeetingWithAttendeesInfo } from '../../models/meeting'
 import { updateRunningTotals } from '../actions/currentMeeting'
 import { addMeetingThunk } from '../actions/meetings'
 import { useAppSelector, useAppDispatch } from '../hooks'
-
-function parseDuration(duration: number): [string, string, string] {
-  const seconds = Math.round(duration / 1000)
-  const minutes = Math.round(seconds / 60)
-  const hours = Math.round(minutes / 60)
-  return [hours, minutes % 60, seconds % 60].map((n) => n.toString()) as [
-    string,
-    string,
-    string
-  ]
-}
+import { parseDuration } from '../utils'
 
 function ActiveMeeting() {
   const currentMeeting = useAppSelector((state) => state.currentMeeting)
