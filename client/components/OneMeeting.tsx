@@ -13,11 +13,13 @@ function OneMeeting(props: MeetingWithAttendees) {
 
   return (
     <>
-      <div className="container has-text-centered">
+      <div className="hero is-light has-text-centered">
         <h3 className="title is-3">{props.meeting_name}</h3>
         <p>Date: {dateString}</p>
         {!isDisplayed ? (
-          <button onClick={clickHandler}>Show Details</button>
+          <button className="button is-primary" onClick={clickHandler}>
+            Show Details
+          </button>
         ) : (
           <>
             <OneMeetingDetails
@@ -29,7 +31,9 @@ function OneMeeting(props: MeetingWithAttendees) {
               meeting_name={props.meeting_name}
               start_time={props.start_time}
             />
-            <button onClick={clickHandler}>Hide Details</button>
+            <button className="button is-primary" onClick={clickHandler}>
+              Hide Details
+            </button>
           </>
         )}
 
