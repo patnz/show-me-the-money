@@ -20,7 +20,7 @@ function History() {
 
   return (
     <>
-      <div className="container box">
+      <div className="container hero">
         <h2 className="title is-2">Meeting history</h2>
         {meetings &&
           meetings.map((meeting: MeetingWithID) => {

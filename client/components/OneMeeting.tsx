@@ -17,11 +17,18 @@ function OneMeeting(props: MeetingWithAttendees) {
 
   return (
     <>
-      <div className="container has-text-centered">
+      <div className="hero is-light has-text-centered">
         <h3 className="title is-3">{props.meeting_name}</h3>
         <p>Date: {dateString}</p>
-        <Link to={'/history/' + props.id}>More details...</Link>
-        <button onClick={deleteMeeting(props.id)}>delete</button>
+        <Link className="button" to={'/history/' + props.id}>
+          More details...
+        </Link>
+        <button
+          className="button is-primary hero"
+          onClick={deleteMeeting(props.id)}
+        >
+          delete
+        </button>
       </div>
     </>
   )
