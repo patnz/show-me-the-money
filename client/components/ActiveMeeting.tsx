@@ -1,103 +1,61 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
+import { MeetingWithAttendeesInfo } from '../../models/meeting'
+import { updateRunningTotals } from '../actions/currentMeeting'
+import { addMeetingThunk } from '../actions/meetings'
 import { useAppSelector, useAppDispatch } from '../hooks'
+import { parseDuration } from '../utils'
 
 function ActiveMeeting() {
-  const fakeData = {
-    meeting_name: 'Google meet',
-    duration: 4505000, // Should print 01:15
-    start_time: 1680570000000,
-    total_cost: 789.3587594,
-    attendees: 7,
-    attendee_data: [
-      {
-        id: 1,
-        wage: 25,
-        name: 'Kelly',
-      },
-      {
-        id: 2,
-        wage: 25,
-        name: 'Shrena',
-      },
-      {
-        id: 3,
-        wage: 25,
-        name: 'Josh',
-      },
-    ],
-  }
-
-  // const data = useAppSelector((state) => state.data)
-
-  // const dispatch = useAppDispatch()
-
-  const [meeting, setMeeting] = useState(fakeData)
+  const currentMeeting = useAppSelector((state) => state.currentMeeting)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const interval = setInterval(() => {
-      fakeData.duration += 1000
-      // console.log(fakeData.duration)
-      setMeeting({
-        ...fakeData,
-        duration: fakeData.duration + 1000,
-      })
-
-      //dispatch(data)
+      dispatch(updateRunningTotals())
     }, 1000)
     return () => clearInterval(interval)
-  }, [])
+  }, [dispatch])
 
   const dollars = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-  }).format(fakeData.total_cost)
+  }).format(currentMeeting.runningCost)
 
-  const hours = new Date(fakeData.duration).getHours()
-  const minutes = new Date(fakeData.duration).getMinutes()
-  const seconds = new Date(fakeData.duration).getSeconds()
+  const [hours, minutes, seconds] = parseDuration(
+    currentMeeting.runningDuration
+  )
 
-  const getHours = () => {
-    if (hours > 12) {
-      return `0${hours - 12}`
-    } else {
-      return hours
+  const handleEndMeeting = () => {
+    const meeting: MeetingWithAttendeesInfo = {
+      meeting_name: currentMeeting.meeting_name,
+      start_time: currentMeeting.start_time,
+      duration: currentMeeting.runningDuration,
+      total_cost: currentMeeting.runningCost,
+      attendee_data: currentMeeting.attendees,
+      attendees: currentMeeting.attendees.length,
     }
-  }
-
-  const getMinutes = () => {
-    if (minutes < 10) {
-      return `0${minutes}`
-    } else {
-      return minutes
-    }
-  }
-
-  const getSeconds = () => {
-    if (seconds < 10) {
-      return `0${seconds}`
-    } else {
-      return seconds
-    }
+    dispatch(addMeetingThunk(meeting))
   }
 
   return (
     <>
-      <h1>Name: {fakeData.meeting_name}</h1>
+      <h1>Name: {currentMeeting.meeting_name}</h1>
       <p>
         Attendees:
         <ul>
-          {fakeData.attendee_data.map((e, i) => {
-            return <li key={e.id}>{e.name}</li>
+          {currentMeeting.attendees.map((e, i) => {
+            return <li key={i}>{e.name}</li>
           })}
         </ul>
       </p>
       <p>Current meeting length:</p>
       <p>
-        {getHours()}:{getMinutes()}:{getSeconds()}
+        {hours}:{(minutes.length === 1 ? '0' : '') + minutes}:
+        {(seconds.length === 1 ? '0' : '') + seconds}
       </p>
       <p>This meeting cost:</p>
       <p>{dollars}</p>
-      <button>End meeting</button>
+      <button onClick={handleEndMeeting}>End meeting</button>
     </>
   )
 }
