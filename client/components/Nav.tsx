@@ -38,6 +38,7 @@ function Nav() {
             <IfAuthenticated>
               <Link to="/meeting">Meeting</Link>
               <Link to="/history">History</Link>
+
               <button
                 className="button is-primary is-normal"
                 onClick={() => logout()}

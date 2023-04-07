@@ -36,7 +36,7 @@ function ActiveMeeting() {
   useEffect(() => {
     const interval = setInterval(() => {
       fakeData.duration += 1000
-      // console.log(fakeData.duration)
+
       setMeeting({
         ...fakeData,
         duration: fakeData.duration + 1000,
