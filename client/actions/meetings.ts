@@ -39,7 +39,7 @@ export function addMeetingThunk(
     return APIAddMeeting(meeting).then(
       (returnedMeeting: MeetingWithAttendees) => {
         dispatch(addMeeting(returnedMeeting))
-        dispatch(endMeeting)
+        dispatch(endMeeting())
       }
     )
   }
