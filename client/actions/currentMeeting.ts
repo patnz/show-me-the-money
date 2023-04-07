@@ -1,4 +1,3 @@
-// import type { ThunkAction } from 'redux-thunk'
 import { StartMeetingPayload } from '../reducers/currentMeeting'
 
 export const START_MEETING = 'START_MEETING'
