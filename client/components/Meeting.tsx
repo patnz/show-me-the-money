@@ -1,5 +1,5 @@
 import { useAppSelector } from '../hooks'
-import { CurrentMeetingInfo } from '../reducers/currentMeeting'
+import { CurrentMeetingInfo } from '../../models/currentMeeting'
 import ActiveMeeting from './ActiveMeeting'
 import SetupMeeting from './SetupMeeting'
 
