@@ -10,7 +10,7 @@ function SetupMeeting() {
   const [members, setMembers] = useState([] as AttendeeInfo[])
   const [newMember, setNewMember] = useState({
     name: '',
-    wage: '0',
+    wage: '',
   })
   const dispatch = useAppDispatch()
 
@@ -22,17 +22,17 @@ function SetupMeeting() {
   const submitMember = (e: FormEvent) => {
     e.preventDefault()
     const wage = Number(newMember.wage)
-    if (!Number.isNaN(wage)) {
+    if (Number.isNaN(wage)) {
+      alert(`${newMember.wage} is not a number`)
+    } else {
       const { name } = newMember
       setMembers([...members, { name, wage }])
-      setNewMember({ name: '', wage: '0' })
+      setNewMember({ name: '', wage: '' })
     }
   }
 
   const removeMemberAtCB = (idx: number) => {
-    return () => {
-      setMembers(members.filter((_, i) => i !== idx))
-    }
+    setMembers(members.filter((_, i) => i !== idx))
   }
 
   return (
@@ -52,19 +52,21 @@ function SetupMeeting() {
         <h1 className="title is-3">Current list of Attendees:</h1>
         <ul>
           {members.map((member, i) => (
-            <li key={i}>
+            <li className="subtitle is-2" key={i}>
               {member.name}{' '}
               <button
-                className="button is-primary"
+                className="button"
                 type="button"
-                onClick={removeMemberAtCB(i)}
+                onClick={() => removeMemberAtCB(i)}
               >
                 X
               </button>
             </li>
           ))}
         </ul>
-        <button className="button is-primary">Start</button>
+        <button className="button is-primary" disabled={!members.length}>
+          Start
+        </button>
       </form>
       <p>Add Attendee:</p>
       <form onSubmit={submitMember}>
@@ -93,7 +95,14 @@ function SetupMeeting() {
             value={newMember.wage}
           />
         </label>
-        <button className="button is-primary">Add</button>
+        <button
+          className="button is-primary"
+          disabled={Object.values(newMember).some(
+            (value) => value.length === 0
+          )}
+        >
+          Add
+        </button>
       </form>
     </>
   )
