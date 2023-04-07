@@ -11,7 +11,13 @@ export default function OneMeetingDetails({
   return (
     <>
       <br />
-      <h2>Total cost: ${total_cost}</h2>
+      <h2>
+        Total cost:
+        {new Intl.NumberFormat('en-US', {
+          style: 'currency',
+          currency: 'USD',
+        }).format(total_cost)}
+      </h2>
       <p>Number of Attendees: {attendees}</p>
       <p>Attendees: </p>
       <ul>
