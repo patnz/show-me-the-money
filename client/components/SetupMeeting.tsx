@@ -10,7 +10,7 @@ function SetupMeeting() {
   const [members, setMembers] = useState([] as AttendeeInfo[])
   const [newMember, setNewMember] = useState({
     name: '',
-    wage: '0',
+    wage: '',
   })
   const dispatch = useAppDispatch()
 
@@ -22,17 +22,17 @@ function SetupMeeting() {
   const submitMember = (e: FormEvent) => {
     e.preventDefault()
     const wage = Number(newMember.wage)
-    if (!Number.isNaN(wage)) {
+    if (Number.isNaN(wage)) {
+      alert(`${newMember.wage} is not a number`)
+    } else {
       const { name } = newMember
       setMembers([...members, { name, wage }])
-      setNewMember({ name: '', wage: '0' })
+      setNewMember({ name: '', wage: '' })
     }
   }
 
   const removeMemberAtCB = (idx: number) => {
-    return () => {
-      setMembers(members.filter((_, i) => i !== idx))
-    }
+    setMembers(members.filter((_, i) => i !== idx))
   }
 
   return (
@@ -53,13 +53,13 @@ function SetupMeeting() {
           {members.map((member, i) => (
             <li key={i}>
               {member.name}{' '}
-              <button type="button" onClick={removeMemberAtCB(i)}>
+              <button type="button" onClick={() => removeMemberAtCB(i)}>
                 X
               </button>
             </li>
           ))}
         </ul>
-        <button>Start</button>
+        <button disabled={!members.length}>Start</button>
       </form>
       <p>Add Attendee:</p>
       <form onSubmit={submitMember}>
@@ -86,7 +86,13 @@ function SetupMeeting() {
             value={newMember.wage}
           />
         </label>
-        <button>Add</button>
+        <button
+          disabled={Object.values(newMember).some(
+            (value) => value.length === 0
+          )}
+        >
+          Add
+        </button>
       </form>
     </>
   )

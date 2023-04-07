@@ -1,4 +1,4 @@
-import { StartMeetingPayload } from '../reducers/currentMeeting'
+import { StartMeetingPayload } from '../../models/currentMeeting'
 
 export const START_MEETING = 'START_MEETING'
 export const END_MEETING = 'END_MEETING'
