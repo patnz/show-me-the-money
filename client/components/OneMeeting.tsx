@@ -1,27 +1,39 @@
-import { Link } from 'react-router-dom'
 import { MeetingWithAttendees } from '../../models/meeting'
-import { useAppDispatch } from '../hooks'
 import OneMeetingDetails from './OneMeetingDetails'
+import { useState } from 'react'
 
 function OneMeeting(props: MeetingWithAttendees) {
   const dateString = new Date(props.start_time).toLocaleDateString()
 
-  // const dispatch = useAppDispatch()a
+  const [isDisplayed, setIsDisplayed] = useState(false)
 
-  const deleteMeeting = (id: number) => {
-    return () => {
-      // dispatchEvent(deleteMeetingThunk(id))
-    }
+  const clickHandler = () => {
+    setIsDisplayed(!isDisplayed)
   }
-  //swap over when backend ready
 
   return (
     <>
       <div className="container has-text-centered">
         <h3 className="title is-3">{props.meeting_name}</h3>
         <p>Date: {dateString}</p>
-        <Link to={'/history/' + props.id}>More details...</Link>
-        <button onClick={deleteMeeting(props.id)}>delete</button>
+        {!isDisplayed ? (
+          <button onClick={clickHandler}>Show Details</button>
+        ) : (
+          <>
+            <OneMeetingDetails
+              attendee_data={props.attendee_data}
+              duration={props.duration}
+              total_cost={props.total_cost}
+              attendees={props.attendees}
+              id={props.id}
+              meeting_name={props.meeting_name}
+              start_time={props.start_time}
+            />
+            <button onClick={clickHandler}>Hide Details</button>
+          </>
+        )}
+
+        <br />
       </div>
     </>
   )
