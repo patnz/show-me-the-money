@@ -4,25 +4,13 @@ import {
   END_MEETING,
   UPDATE_RUNNING_TOTALS,
 } from '../actions/currentMeeting'
-import { AttendeeInfo } from '../../models/attendee'
-
-export interface CurrentMeetingInfo extends StartMeetingPayload {
-  start_time: Date
-  inProgress: boolean
-  runningCost: number
-  runningDuration: number
-}
-
-export interface StartMeetingPayload {
-  meeting_name: string
-  attendess: AttendeeInfo[]
-}
+import { CurrentMeetingInfo } from '../../models/currentMeeting'
 
 const initialState = {
   start_time: new Date(),
   inProgress: false,
   meeting_name: '',
-  attendess: [],
+  attendees: [],
   runningCost: 0,
   runningDuration: 0,
 }
@@ -31,7 +19,7 @@ function updateRunningTotalsHelper(
   state: CurrentMeetingInfo
 ): CurrentMeetingInfo {
   const timeDelta = new Date().getTime() - state.start_time.getTime()
-  const totalWage = state.attendess.reduce(
+  const totalWage = state.attendees.reduce(
     (runSum, { wage }) => runSum + wage,
     0
   )
