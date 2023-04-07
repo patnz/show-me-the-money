@@ -15,14 +15,14 @@ export interface CurrentMeetingInfo extends StartMeetingPayload {
 
 export interface StartMeetingPayload {
   meeting_name: string
-  attendess: AttendeeInfo[]
+  attendees: AttendeeInfo[]
 }
 
 const initialState = {
   start_time: new Date(),
   inProgress: false,
   meeting_name: '',
-  attendess: [],
+  attendees: [] as AttendeeInfo[],
   runningCost: 0,
   runningDuration: 0,
 }
@@ -31,7 +31,7 @@ function updateRunningTotalsHelper(
   state: CurrentMeetingInfo
 ): CurrentMeetingInfo {
   const timeDelta = new Date().getTime() - state.start_time.getTime()
-  const totalWage = state.attendess.reduce(
+  const totalWage = state.attendees.reduce(
     (runSum, { wage }) => runSum + wage,
     0
   )
@@ -39,7 +39,10 @@ function updateRunningTotalsHelper(
   return { ...state, runningCost, runningDuration: timeDelta }
 }
 
-function currentMeeting(state = initialState, action: MeetingAction): object {
+function currentMeeting(
+  state = initialState,
+  action: MeetingAction
+): CurrentMeetingInfo {
   const { type, payload } = action
 
   switch (type) {
@@ -48,7 +51,7 @@ function currentMeeting(state = initialState, action: MeetingAction): object {
         ...payload,
         start_time: new Date(),
         inProgress: true,
-        runningTime: 0,
+        runningDuration: 0,
         runningCost: 0,
       }
     case END_MEETING:

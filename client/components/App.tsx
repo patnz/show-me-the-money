@@ -7,9 +7,11 @@ import History from './History'
 import Welcome from './Welcome'
 import GetSalary from './GetSalary'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
+import Graph from './Graph'
 import { thunkGetMeetings } from '../actions/meetings'
 import { useEffect } from 'react'
 import { useAppDispatch } from '../hooks'
+import OneMeetingDetails from './OneMeetingDetails'
 
 function App() {
   const dispatch = useAppDispatch()
@@ -38,6 +40,7 @@ function App() {
               <Route path="/" element={<Welcome />} />
               <Route path="/meeting" element={<Meeting />} />
               <Route path="/history" element={<History />} />
+              <Route path="/history/*" element={<OneMeetingDetails />} />
               <Route path="/salary" element={<GetSalary />} />
             </Routes>
           </IfAuthenticated>
