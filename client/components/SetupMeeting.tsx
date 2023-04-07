@@ -16,7 +16,7 @@ function SetupMeeting() {
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    dispatch(startMeeting({ attendess: members, meeting_name: meetingName }))
+    dispatch(startMeeting({ attendees: members, meeting_name: meetingName }))
   }
 
   const submitMember = (e: FormEvent) => {
