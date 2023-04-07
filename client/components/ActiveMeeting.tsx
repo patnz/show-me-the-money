@@ -39,8 +39,8 @@ function ActiveMeeting() {
 
   return (
     <>
-      <h1>Name: {currentMeeting.meeting_name}</h1>
-      <p>
+      <h1 className="title is-3">Name: {currentMeeting.meeting_name}</h1>
+      <p className="title is-3">
         Attendees:
         <ul>
           {currentMeeting.attendees.map((e, i) => {
@@ -48,13 +48,15 @@ function ActiveMeeting() {
           })}
         </ul>
       </p>
-      <p>Current meeting length:</p>
-      <p>
+      <p className="title is-4">Current meeting length:</p>
+      <p className="title is-1" style={{ color: 'red' }}>
         {hours}:{(minutes.length === 1 ? '0' : '') + minutes}:
         {(seconds.length === 1 ? '0' : '') + seconds}
       </p>
-      <p>This meeting cost:</p>
-      <p>{dollars}</p>
+      <p className="title is-2">This meeting cost:</p>
+      <p className="title is-1" style={{ color: 'red' }}>
+        {dollars}
+      </p>
       <button onClick={handleEndMeeting}>End meeting</button>
     </>
   )
