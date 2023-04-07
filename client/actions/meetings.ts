@@ -51,6 +51,6 @@ export function thunkGetMeetings(): ThunkAction {
       .then((meetings: MeetingWithAttendees[]) => {
         dispatch(receiveMeetings(meetings))
       })
-      .catch((err: Error) => console.log(err.message))
+      .catch((err: Error) => alert(err.message))
   }
 }
