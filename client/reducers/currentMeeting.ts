@@ -5,12 +5,13 @@ import {
   UPDATE_RUNNING_TOTALS,
 } from '../actions/currentMeeting'
 import { CurrentMeetingInfo } from '../../models/currentMeeting'
+import { AttendeeInfo } from '../../models/attendee'
 
 const initialState = {
   start_time: new Date(),
   inProgress: false,
   meeting_name: '',
-  attendees: [],
+  attendees: [] as AttendeeInfo[],
   runningCost: 0,
   runningDuration: 0,
 }
@@ -27,7 +28,10 @@ function updateRunningTotalsHelper(
   return { ...state, runningCost, runningDuration: timeDelta }
 }
 
-function currentMeeting(state = initialState, action: MeetingAction): object {
+function currentMeeting(
+  state = initialState,
+  action: MeetingAction
+): CurrentMeetingInfo {
   const { type, payload } = action
 
   switch (type) {
@@ -36,7 +40,7 @@ function currentMeeting(state = initialState, action: MeetingAction): object {
         ...payload,
         start_time: new Date(),
         inProgress: true,
-        runningTime: 0,
+        runningDuration: 0,
         runningCost: 0,
       }
     case END_MEETING:

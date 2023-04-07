@@ -1,10 +1,5 @@
 import connection from './connection'
-import {
-  MeetingWithAttendeesInfo,
-  Meeting,
-  MeetingWithAttendees,
-  MeetingInfo,
-} from '../../models/meeting'
+import { Meeting, MeetingInfo } from '../../models/meeting'
 import { Attendee, AttendeeInfo } from '../../models/attendee'
 
 // meetings

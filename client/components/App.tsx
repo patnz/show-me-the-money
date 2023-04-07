@@ -7,7 +7,6 @@ import History from './History'
 import Welcome from './Welcome'
 import GetSalary from './GetSalary'
 import { IfAuthenticated, IfNotAuthenticated } from './Authenticated'
-import Graph from './Graph'
 import { thunkGetMeetings } from '../actions/meetings'
 import { useEffect } from 'react'
 import { useAppDispatch } from '../hooks'
@@ -19,6 +18,7 @@ function App() {
   useEffect(() => {
     dispatch(thunkGetMeetings())
   }, [dispatch])
+
   return (
     <>
       <div className="container has-text-centered">
@@ -51,5 +51,3 @@ function App() {
 }
 
 export default App
-
-// Incorporate Getsalary when we can check if they have a salary already in global state to avoid asking every time
