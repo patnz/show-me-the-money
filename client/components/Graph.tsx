@@ -7,7 +7,6 @@ function Graph() {
   const totalByMonth = meetings.reduce(
     (accumulator, oneMeeting) => {
       const month = oneMeeting.start_time.getMonth()
-      console.log(month)
       accumulator[month + 1] += oneMeeting.total_cost
       return accumulator
     },
