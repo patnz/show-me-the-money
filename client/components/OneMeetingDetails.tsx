@@ -1,16 +1,18 @@
-import attendees from '../reducers/attendees'
+import { MeetingWithAttendees } from '../../models/meeting'
+import { parseDuration } from '../utils'
 
 export default function OneMeetingDetails({
-  meeting_name,
   duration,
   attendee_data,
   total_cost,
-  antendees,
-}) {
+  attendees,
+}: MeetingWithAttendees) {
+  const [hours, minutes, seconds] = parseDuration(duration)
   return (
     <>
       <br />
       <h2>Total cost: ${total_cost}</h2>
+      <p>Number of Attendees: {attendees}</p>
       <p>
         Attendees:{' '}
         <ul>
@@ -21,7 +23,10 @@ export default function OneMeetingDetails({
           ))}
         </ul>
       </p>
-      <p>Total Duration: {duration / 60000} minutes</p>
+      <p>
+        Total Duration: {hours}:{(minutes.length === 1 ? '0' : '') + minutes}:
+        {(seconds.length === 1 ? '0' : '') + seconds}
+      </p>
     </>
   )
 }
