@@ -37,35 +37,41 @@ function SetupMeeting() {
 
   return (
     <>
-      <h1>Plan Meeting</h1>
+      <h1 className="title is-3">Plan Meeting</h1>
       <form onSubmit={submitHandler}>
-        <label htmlFor="meeting-name">
+        <label className="label" htmlFor="meeting-name">
           Meeting Name:
           <input
+            className="input"
             id="meeting-name"
             name="meeting-name"
             onChange={(e: InputEvent) => setMeetingName(e.target.value)}
             value={meetingName}
           />
         </label>
-        <p>Planned attendees:</p>
+        <h1 className="title is-3">Current list of Attendees:</h1>
         <ul>
           {members.map((member, i) => (
             <li key={i}>
               {member.name}{' '}
-              <button type="button" onClick={removeMemberAtCB(i)}>
+              <button
+                className="button is-primary"
+                type="button"
+                onClick={removeMemberAtCB(i)}
+              >
                 X
               </button>
             </li>
           ))}
         </ul>
-        <button>Start</button>
+        <button className="button is-primary">Start</button>
       </form>
       <p>Add Attendee:</p>
       <form onSubmit={submitMember}>
-        <label htmlFor="member-name">
+        <label className="label" htmlFor="member-name">
           Name:
           <input
+            className="input"
             id="member-name"
             name="name"
             onChange={(e: InputEvent) =>
@@ -74,9 +80,10 @@ function SetupMeeting() {
             value={newMember.name}
           />
         </label>
-        <label htmlFor="wage">
+        <label className="label" htmlFor="wage">
           Wage: $
           <input
+            className="input"
             id="member-wage"
             name="wage"
             pattern="[0-9]+(\.[0-9]{1,2})?"
@@ -86,7 +93,7 @@ function SetupMeeting() {
             value={newMember.wage}
           />
         </label>
-        <button>Add</button>
+        <button className="button is-primary">Add</button>
       </form>
     </>
   )
