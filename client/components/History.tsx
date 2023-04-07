@@ -15,7 +15,7 @@ function History() {
 
   useEffect(() => {
     dispatch(thunkGetMeetings())
-  }, [dispatch])
+  }, [])
 
   return (
     <div className="container">
