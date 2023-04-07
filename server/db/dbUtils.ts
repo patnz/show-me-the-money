@@ -37,7 +37,7 @@ export async function addMeetingWithAttendees(
 
   const { meeting_name, duration, start_time, total_cost, attendees } = meeting
 
-  const meetingWithoutAttendees = {
+  const meetingOnly = {
     meeting_name,
     duration,
     start_time,
@@ -45,7 +45,7 @@ export async function addMeetingWithAttendees(
     attendees,
   }
 
-  const addedMeeting = await db.addMeeting(meetingWithoutAttendees)
+  const addedMeeting = await db.addMeeting(meetingOnly)
   const currentMeetingId = addedMeeting.id
 
   for (const attendee of attendeesData) {

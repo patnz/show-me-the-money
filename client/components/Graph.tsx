@@ -7,7 +7,8 @@ function Graph() {
   const totalByMonth = meetings.reduce(
     (accumulator, oneMeeting) => {
       const month = oneMeeting.start_time.getMonth()
-      accumulator[month] += oneMeeting.total_cost
+      console.log(month)
+      accumulator[month + 1] += oneMeeting.total_cost
       return accumulator
     },
     {
@@ -24,6 +25,10 @@ function Graph() {
       11: 0,
       12: 0,
     } as Record<number, number>
+  )
+
+  const nullified = Object.values(totalByMonth).map((total) =>
+    total === 0 ? null : total
   )
 
   const labels = [
@@ -46,7 +51,7 @@ function Graph() {
     datasets: [
       {
         label: '2023 Google Meeting Costs',
-        data: Object.values(totalByMonth),
+        data: nullified,
         fill: false,
         borderColor: 'rgb(75, 192, 192)',
         tension: 0.2,

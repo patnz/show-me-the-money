@@ -54,17 +54,6 @@ function Nav() {
               </button>
             </IfAuthenticated>
             <IfNotAuthenticated>
-              <Link className="button is-primary is-normal" to="/meeting">
-                Start meeting
-              </Link>
-
-              <Link className="button is-primary is-normal" to="/history">
-                Meeting history
-              </Link>
-              <Link className="button is-primary is-normal" to="/salary">
-                Salary
-              </Link>
-
               <button
                 className="button is-primary is-normal"
                 onClick={() => loginWithRedirect()}

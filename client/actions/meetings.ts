@@ -9,10 +9,12 @@ import { APIGetAllMeetings } from '../apis/apiClient'
 
 export const RECEIVE_MEETINGS = 'RECEIVE_MEETINGS'
 export const ADD_MEETING = 'ADD_MEETING'
+export const SHOW_ERROR = 'SHOW_ERROR'
 
 export type MeetingsAction =
   | { type: typeof RECEIVE_MEETINGS; payload: MeetingWithAttendees[] }
   | { type: typeof ADD_MEETING; payload: MeetingWithAttendees }
+  | { type: typeof SHOW_ERROR; payload: string }
 
 export function receiveMeetings(
   meetings: MeetingWithAttendees[]
@@ -27,6 +29,13 @@ export function addMeeting(meeting: MeetingWithAttendees): MeetingsAction {
   return {
     type: ADD_MEETING,
     payload: meeting,
+  }
+}
+
+export function showError(errorMessage: string): MeetingsAction {
+  return {
+    type: SHOW_ERROR,
+    payload: errorMessage,
   }
 }
 
@@ -51,6 +60,8 @@ export function thunkGetMeetings(): ThunkAction {
       .then((meetings: MeetingWithAttendees[]) => {
         dispatch(receiveMeetings(meetings))
       })
-      .catch((err: Error) => alert(err.message))
+      .catch((err: Error) => {
+        dispatch(showError(err.message))
+      })
   }
 }
