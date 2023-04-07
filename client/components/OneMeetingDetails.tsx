@@ -19,16 +19,14 @@ export default function OneMeetingDetails({
         }).format(total_cost)}
       </h2>
       <p>Number of Attendees: {attendees}</p>
-      <p>
-        Attendees:{' '}
-        <ul>
-          {attendee_data.map((attendee) => (
-            <li key={attendee.id}>
-              {attendee.name} - Wage: ${attendee.wage}
-            </li>
-          ))}
-        </ul>
-      </p>
+      <p>Attendees: </p>
+      <ul>
+        {attendee_data.map((attendee) => (
+          <li key={attendee.id}>
+            {attendee.name} - Wage: ${attendee.wage}
+          </li>
+        ))}
+      </ul>
       <p>
         Total Duration: {hours}:{(minutes.length === 1 ? '0' : '') + minutes}:
         {(seconds.length === 1 ? '0' : '') + seconds}
