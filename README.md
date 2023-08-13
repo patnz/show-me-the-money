@@ -5,15 +5,6 @@
 
 **Team Members:** Estrella, Isaac, Jack, Josh, Louis, Reuben, Ryan, Olivia, Pat, Sam
 
-### Roles
-
-**Product Owner:** Jack  
-**Scrum master:** Josh   
-**Vibes watcher:** Reuben  
-**Git manager:** Ryan   
-**FE Lead:** Sam  
-**BE Lead:** Olivia   
-**Hype people:** Everyone!!    
 
 ## Teamwork principles
 
@@ -56,55 +47,6 @@
 - Do checkins --> small and big
 - Approach relevant person if there is an issue
 - Communicate in group chat to prevent issues arising  
-
-## Personal learning objectives (focus areas)
-
-Group objective: Gain experience across the stack and working in a larger team. 
-
-**Estrella:**  
-- across stack
-- Css/Bulma
-
-**Isaac:** 
-- Work across the stack (flexible)
-- Backend 
-- Pairing 
-  
-**Jack:**
-- Have fun 
-- Make something to be proud of
-- Redux 
-   
-**Josh:**
-- Sass/Bulma
-- Testing
-- Redux
-  
-**Louis:**
-- Work across the stack (flexible)
-- Auth
-
-**Reuben:**
-- Redux
-- Auth
-  
-**Ryan:**
-- Have fun with frontend tech
-- Front end
-
-**Olivia:**
-- Work across the stack (flexible)
-- Backend
-- Testing
-
-**Pat:**
-- Backend 
-- Fullstack
-
-**Sam:**
-- Smooth operations
-- Frontend
-
 
 ## Week 7 Large group project
 
