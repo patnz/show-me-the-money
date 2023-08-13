@@ -1,7 +1,7 @@
 # $how Me The Money
 
 
-## Team Members and Roles
+## Team Members
 
 **Team Members:** Estrella, Isaac, Jack, Josh, Louis, Reuben, Ryan, Olivia, Pat, Sam
 
